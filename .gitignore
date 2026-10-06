@@ -1,0 +1,6 @@
+.DS_Store
+__pycache__/
+.venv/
+docs/examples/*.png
+dist/
+docs/publication-*.jpg

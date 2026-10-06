@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Game Photo Mode · 样张对照</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f0e8;color:#242a29;font-family:system-ui,-apple-system,sans-serif}main{max-width:1140px;margin:auto;padding:48px 28px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #c9cdc5;padding-bottom:18px}a{color:inherit;text-underline-offset:4px}.wordmark{font-family:monospace;letter-spacing:.04em}h1{font-size:clamp(34px,5vw,60px);font-weight:550;letter-spacing:-.045em;margin:38px 0 14px}p{line-height:1.75;max-width:760px;color:#626963}.tools{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:28px 0 18px}.group{display:flex;gap:4px;background:#e5e7df;padding:4px;border-radius:7px}button{font:inherit;font-size:14px;border:0;border-radius:4px;padding:10px 15px;background:transparent;color:#596258;cursor:pointer}button[aria-pressed=true]{background:#244b3d;color:#fff}button:focus-visible,input:focus-visible{outline:3px solid #c68a36;outline-offset:3px}.stage{position:relative;aspect-ratio:3/2;background:#d9dcd4;overflow:hidden;border-radius:6px}.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}#original{clip-path:inset(0 50% 0 0)}.line{position:absolute;top:0;bottom:0;left:50%;width:2px;background:white;pointer-events:none}.caption{position:absolute;top:14px;padding:6px 10px;background:#f3f0e8ec;color:#252a28;font-size:12px;border-radius:3px}.before{left:14px}.after{right:14px}.control{display:flex;align-items:center;gap:15px;margin:15px 0;font-size:12px;color:#626963}.control input{flex:1;accent-color:#244b3d}.note{border-top:1px solid #c9cdc5;margin-top:26px;padding-top:16px;display:grid;grid-template-columns:1fr auto;gap:20px}.note p{font-size:13px;margin:0}.note a{font-size:13px}.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:30px;font-size:13px}footer{font-size:12px;color:#7c837b;margin-top:48px}@media(max-width:540px){main{padding:28px 16px}.tools{gap:10px}.group{width:100%}.group button{flex:1;padding:10px 6px}.caption{top:8px;padding:4px 7px}.note{grid-template-columns:1fr}}
+</style>
+<main>
+<header><span class="wordmark">GAME PHOTO MODE / 01</span><a href="../README.md">项目说明 ↗</a></header>
+<h1>换一个世界。</h1>
+<p>构图留下，材质和形状重新搭建。切换游戏与场景，再拖动分界线，看看同一张照片发生了什么变化。</p>
+<div class="tools">
+<div class="group" aria-label="游戏预设"><button data-game="minecraft" aria-pressed="true">Minecraft</button><button data-game="cyberpunk" aria-pressed="false">Cyberpunk 2077</button></div>
+<div class="group" aria-label="测试场景"><button data-scene="courtyard" aria-pressed="true">01 / 院落</button><button data-scene="street" aria-pressed="false">02 / 街景人像</button></div>
+</div>
+<div class="stage"><img id="edited" src="examples/courtyard-minecraft.jpg" alt="院落 Minecraft 编辑结果"><img id="original" src="examples/courtyard-before.jpg" alt="院落原始合成照片"><div class="line" id="line"></div><span class="caption before">原图</span><span class="caption after" id="label">Minecraft</span></div>
+<label class="control">编辑更多<input type="range" id="split" min="0" max="100" value="50" aria-label="原图与编辑结果分界"><span>原图更多</span></label>
+<div class="note"><p id="detail">建筑和植物按粗方块尺度重建；自行车是方块道具近似，不是原版物品。</p><a id="open-image" href="examples/courtyard-minecraft.jpg">打开编辑图 ↗</a></div>
+<nav class="links"><a href="../packages/game-photo-mode-v1.0.0.zip">下载 Skill</a><a href="../evals/README.md">提示与失败记录</a><a href="../skills/game-photo-mode/SKILL.md">读取 Skill</a></nav>
+<footer>AI 生成测试素材与实际图像输入编辑 · 不含私人照片或提取的游戏资源 · 并非游戏实际截图</footer>
+</main>
+<script>
+let game='minecraft',scene='courtyard';
+const notes={minecraft:{courtyard:'建筑和植物按粗方块尺度重建；自行车是方块道具近似，不是原版物品。',street:'人物变为方块角色，以发型、衣服颜色和姿势保留辨识度；第二轮去掉了湿地写实反射。'},cyberpunk:{courtyard:'保留阴天院落，用功能性工业面板、管线和实体灯重建；辨识度弱于商业街。',street:'保留人物和街道关系，局部冷暖光与湿地反射对应；远景比原图更密。'}};
+const names={courtyard:'院落',street:'街景人像'};
+function render(){document.getElementById('original').src=`examples/${scene}-before.jpg`;document.getElementById('original').alt=`${names[scene]}原始合成照片`;document.getElementById('edited').src=`examples/${scene}-${game}.jpg`;document.getElementById('edited').alt=`${names[scene]} ${game} 编辑结果`;document.getElementById('open-image').href=`examples/${scene}-${game}.jpg`;document.getElementById('label').textContent=game==='minecraft'?'Minecraft':'Cyberpunk 2077';document.getElementById('detail').textContent=notes[game][scene];}
+document.querySelectorAll('[data-game]').forEach(b=>b.addEventListener('click',()=>{game=b.dataset.game;document.querySelectorAll('[data-game]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();}));
+document.querySelectorAll('[data-scene]').forEach(b=>b.addEventListener('click',()=>{scene=b.dataset.scene;document.querySelectorAll('[data-scene]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render();}));
+document.getElementById('split').addEventListener('input',e=>{const value=Number(e.target.value);document.getElementById('original').style.clipPath=`inset(0 ${100-value}% 0 0)`;document.getElementById('line').style.left=`${value}%`;});
+</script>
+</html>

@@ -1,0 +1,83 @@
+{
+  "method": "Creating assistant visual review; no independent human reviewer or numerical fidelity measure.",
+  "tool": "Codex built-in image tool; original PNG supplied as actual edit input.",
+  "runs": [
+    {
+      "id": "mc-courtyard-1",
+      "input_png": "courtyard-before.png",
+      "input_sha256": "b5c755accd46648dbca8e7472f5c4a08c8817ef626a1806263dbc4c88087b66f",
+      "prompt_key": "minecraft_courtyard_prompt",
+      "output_png": "courtyard-minecraft-v1.png",
+      "output_sha256": "74d830fcc24f11a9a9e1628b9e05bd0ac4f43b8a196ae5b9630e3a5aed19f550",
+      "published_preview": "docs/examples/courtyard-minecraft-v1.jpg",
+      "preview_sha256": "0abebf68fa16f60307c9ed1b4d07aab56a62799323985ad79581d2bfeb8f9319",
+      "decision": "revised"
+    },
+    {
+      "id": "mc-courtyard-2",
+      "input_png": "courtyard-before.png",
+      "input_sha256": "b5c755accd46648dbca8e7472f5c4a08c8817ef626a1806263dbc4c88087b66f",
+      "prompt_key": "mc_refine_prompt",
+      "output_png": "courtyard-minecraft.png",
+      "output_sha256": "13ed6ea5f6ac4e23e48fabf91e69ab8ef40a3011500f8614fc1bdb4933ab21bb",
+      "published_preview": "docs/examples/courtyard-minecraft.jpg",
+      "preview_sha256": "030e1d01998eb9acc3555ce85be1400eebfec2c1639d776f2472155ad6704708",
+      "decision": "selected"
+    },
+    {
+      "id": "mc-street-1",
+      "input_png": "street-before.png",
+      "input_sha256": "c1d4276d9f3c880c1d6a763acca17e3c5fc5afdfc5a684ac6ee85204e7bbaa61",
+      "prompt_key": "mc_street_prompt",
+      "output_png": "street-minecraft-v1.png",
+      "output_sha256": "190ac5fd68ef27efd5248b6f16fd479b7dcf87e36479ba88858c457a8fec810e",
+      "published_preview": "docs/examples/street-minecraft-v1.jpg",
+      "preview_sha256": "841c1f6418f2d36db3e0496970e71a60915ceb5f256d52a8e2edfc7c4c6b6d70",
+      "decision": "revised"
+    },
+    {
+      "id": "mc-street-2",
+      "input_png": "street-before.png",
+      "input_sha256": "c1d4276d9f3c880c1d6a763acca17e3c5fc5afdfc5a684ac6ee85204e7bbaa61",
+      "prompt_key": "mc_street_refine_prompt",
+      "output_png": "street-minecraft.png",
+      "output_sha256": "90b18ebfd9db2ab6d21f8c596b5109e0ae193fb2574a5ec39fc6bc836f30f37e",
+      "published_preview": "docs/examples/street-minecraft.jpg",
+      "preview_sha256": "33c07fb869c411dcc9376c6da88d2d5e4c31489cf82d7fdf37943f5511f467ff",
+      "decision": "selected"
+    },
+    {
+      "id": "cp-courtyard-1",
+      "input_png": "courtyard-before.png",
+      "input_sha256": "b5c755accd46648dbca8e7472f5c4a08c8817ef626a1806263dbc4c88087b66f",
+      "prompt_key": "cp_courtyard_prompt",
+      "output_png": "courtyard-cyberpunk-v1.png",
+      "output_sha256": "1c1f200fbb8a6c8d19efc0f037fef3c99fdddc1b15bcac4337ad7796b53f53b0",
+      "published_preview": "docs/examples/courtyard-cyberpunk-v1.jpg",
+      "preview_sha256": "2c53744ca07d76bebf37d86cc4da1d2500c3b8eae65e82e6f3879bb5b91316fc",
+      "decision": "revised"
+    },
+    {
+      "id": "cp-courtyard-2",
+      "input_png": "courtyard-before.png",
+      "input_sha256": "b5c755accd46648dbca8e7472f5c4a08c8817ef626a1806263dbc4c88087b66f",
+      "prompt_key": "cp_courtyard_refine_prompt",
+      "output_png": "courtyard-cyberpunk.png",
+      "output_sha256": "57703ca6fda1b20ce48ec0f0d2a6a3b8046b844b748ad82f3ee0535e07c19bf4",
+      "published_preview": "docs/examples/courtyard-cyberpunk.jpg",
+      "preview_sha256": "7933d973f59b883f7045ba13b35896b6472b524341ed7dea018c054cff364fb8",
+      "decision": "selected"
+    },
+    {
+      "id": "cp-street-1",
+      "input_png": "street-before.png",
+      "input_sha256": "c1d4276d9f3c880c1d6a763acca17e3c5fc5afdfc5a684ac6ee85204e7bbaa61",
+      "prompt_key": "cp_street_prompt",
+      "output_png": "street-cyberpunk.png",
+      "output_sha256": "e5db632318aeb3edb225767bb0dfcb1a3e61006cf4369067b1be6e3f16b916aa",
+      "published_preview": "docs/examples/street-cyberpunk.jpg",
+      "preview_sha256": "05b1b466bae70fa367ff1571f6a220e501ae7ddebadcf75ea62c5e815a42ff1a",
+      "decision": "selected"
+    }
+  ]
+}
